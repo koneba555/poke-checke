@@ -14,7 +14,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "ชาริซาร์ด ex",
     set: "Paldea Evolved",
     image: "https://images.pokemontcg.io/sv2/199.png",
-    ebayQuery: "Charizard ex 199/193 Paldea Evolved",
+    ebayQuery: "Charizard ex Paldea Evolved secret rare",
   },
   {
     id: "swsh7-215",
@@ -22,7 +22,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "อัมบรีออน VMAX Alt Art",
     set: "Evolving Skies",
     image: "https://images.pokemontcg.io/swsh7/215.png",
-    ebayQuery: "Umbreon VMAX 215/203 Evolving Skies",
+    ebayQuery: "Umbreon VMAX Evolving Skies alt art",
   },
   {
     id: "swsh7-218",
@@ -30,7 +30,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "เรย์ควาซา VMAX Alt Art",
     set: "Evolving Skies",
     image: "https://images.pokemontcg.io/swsh7/218.png",
-    ebayQuery: "Rayquaza VMAX 218/203 Evolving Skies",
+    ebayQuery: "Rayquaza VMAX Evolving Skies alt art",
   },
   {
     id: "swsh8-269",
@@ -38,7 +38,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "มิว VMAX",
     set: "Fusion Strike",
     image: "https://images.pokemontcg.io/swsh8/269.png",
-    ebayQuery: "Mew VMAX 269/264 Fusion Strike Secret",
+    ebayQuery: "Mew VMAX Fusion Strike secret rare",
   },
   {
     id: "swsh9-174",
@@ -46,7 +46,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "ชาริซาร์ด VSTAR",
     set: "Brilliant Stars",
     image: "https://images.pokemontcg.io/swsh9/174.png",
-    ebayQuery: "Charizard VSTAR 174/172 Brilliant Stars",
+    ebayQuery: "Charizard VSTAR Brilliant Stars secret rare",
   },
   {
     id: "swsh11-196",
@@ -54,7 +54,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "ลูเจีย V Alt Art",
     set: "Silver Tempest",
     image: "https://images.pokemontcg.io/swsh12/196.png",
-    ebayQuery: "Lugia V 196/195 Silver Tempest Alt Art",
+    ebayQuery: "Lugia V Silver Tempest alt art",
   },
   {
     id: "sv2-185",
@@ -62,7 +62,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "ไอโอโนะ Full Art",
     set: "Paldea Evolved",
     image: "https://images.pokemontcg.io/sv2/185.png",
-    ebayQuery: "Iono 185/193 Paldea Evolved Full Art",
+    ebayQuery: "Iono Paldea Evolved full art secret",
   },
   {
     id: "sv1-253",
@@ -70,7 +70,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "ไมราอิดอน ex",
     set: "Scarlet & Violet",
     image: "https://images.pokemontcg.io/sv1/253.png",
-    ebayQuery: "Miraidon ex 253/198 Scarlet Violet Secret",
+    ebayQuery: "Miraidon ex Scarlet Violet secret rare",
   },
   {
     id: "sv3-215",
@@ -78,7 +78,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "ชาริซาร์ด ex (OBF)",
     set: "Obsidian Flames",
     image: "https://images.pokemontcg.io/sv3/215.png",
-    ebayQuery: "Charizard ex 215/197 Obsidian Flames Secret",
+    ebayQuery: "Charizard ex Obsidian Flames secret rare",
   },
   {
     id: "swsh12pt5-184",
@@ -86,7 +86,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "อาร์เซอุส VSTAR",
     set: "Crown Zenith",
     image: "https://images.pokemontcg.io/swsh12pt5/184.png",
-    ebayQuery: "Arceus VSTAR 184 Crown Zenith",
+    ebayQuery: "Arceus VSTAR Crown Zenith galarian gallery",
   },
   {
     id: "swsh4-188",
@@ -94,7 +94,7 @@ export const popularCards: PopularCard[] = [
     nameTh: "พิคาชู VMAX",
     set: "Vivid Voltage",
     image: "https://images.pokemontcg.io/swsh4/188.png",
-    ebayQuery: "Pikachu VMAX 188/185 Vivid Voltage Secret",
+    ebayQuery: "Pikachu VMAX Vivid Voltage secret rare rainbow",
   },
   {
     id: "sv2-198",
@@ -102,6 +102,6 @@ export const popularCards: PopularCard[] = [
     nameTh: "การ์เดวัวร์ ex",
     set: "Paldea Evolved",
     image: "https://images.pokemontcg.io/sv2/198.png",
-    ebayQuery: "Gardevoir ex 198/193 Paldea Evolved Secret",
+    ebayQuery: "Gardevoir ex Paldea Evolved secret rare",
   },
 ];
