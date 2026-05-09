@@ -35,9 +35,9 @@ export async function GET(request: Request) {
     const response = data?.findCompletedItemsResponse?.[0];
     const ack = response?.ack?.[0];
 
-    // DEBUG: return raw eBay response
     if (ack !== "Success") {
-      return Response.json({ error: `eBay raw`, prices: null, items: [], _debug: JSON.stringify(data).slice(0, 500) });
+      const msg = response?.errorMessage?.[0]?.error?.[0]?.message?.[0] ?? `eBay error`;
+      return Response.json({ error: msg, prices: null, items: [] });
     }
 
     const items: any[] = response?.searchResult?.[0]?.item ?? [];

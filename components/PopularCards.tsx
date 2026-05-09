@@ -24,22 +24,27 @@ export default function PopularCards({ onSelect }: Props) {
     });
     setPrices(init);
 
-    popularCards.forEach((card) => {
-      fetch(`/api/ebay-prices?q=${encodeURIComponent(card.ebayQuery)}`)
-        .then((r) => r.json())
-        .then((data) => {
+    // Load sequentially with 1.5s delay to avoid eBay rate limit
+    const loadSequential = async () => {
+      for (const card of popularCards) {
+        try {
+          const r = await fetch(`/api/ebay-prices?q=${encodeURIComponent(card.ebayQuery)}`);
+          const data = await r.json();
           setPrices((prev) => ({
             ...prev,
             [card.id]: { loading: false, data: data.prices ?? null },
           }));
-        })
-        .catch(() => {
+        } catch {
           setPrices((prev) => ({
             ...prev,
             [card.id]: { loading: false, data: null },
           }));
-        });
-    });
+        }
+        await new Promise((res) => setTimeout(res, 1500));
+      }
+    };
+
+    loadSequential();
   }, []);
 
   return (
