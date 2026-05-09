@@ -32,8 +32,16 @@ export async function GET(request: Request) {
     const res = await fetch(url);
     const data = await res.json();
 
-    const items: any[] =
-      data?.findCompletedItemsResponse?.[0]?.searchResult?.[0]?.item ?? [];
+    const response = data?.findCompletedItemsResponse?.[0];
+    const ack = response?.ack?.[0];
+
+    // Return eBay error message for debugging
+    if (ack === "Failure" || ack === "PartialFailure") {
+      const msg = response?.errorMessage?.[0]?.error?.[0]?.message?.[0] ?? "eBay error";
+      return Response.json({ error: msg, prices: null, items: [] });
+    }
+
+    const items: any[] = response?.searchResult?.[0]?.item ?? [];
 
     if (items.length === 0) {
       return Response.json({ prices: null, items: [] });
