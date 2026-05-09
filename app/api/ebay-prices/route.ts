@@ -35,10 +35,10 @@ export async function GET(request: Request) {
     const response = data?.findCompletedItemsResponse?.[0];
     const ack = response?.ack?.[0];
 
-    // Return eBay error message for debugging
-    if (ack === "Failure" || ack === "PartialFailure") {
-      const msg = response?.errorMessage?.[0]?.error?.[0]?.message?.[0] ?? "eBay error";
-      return Response.json({ error: msg, prices: null, items: [] });
+    // DEBUG: return raw eBay status
+    if (ack !== "Success") {
+      const msg = response?.errorMessage?.[0]?.error?.[0]?.message?.[0] ?? `ack=${ack}`;
+      return Response.json({ error: `eBay: ${msg}`, prices: null, items: [], _debug: { ack, appId: appId?.slice(0, 10) } });
     }
 
     const items: any[] = response?.searchResult?.[0]?.item ?? [];
