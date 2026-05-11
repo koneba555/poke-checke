@@ -18,6 +18,10 @@ const PopularCards = dynamic(() => import("@/components/PopularCards"), {
   ssr: false,
 });
 
+const SetBrowser = dynamic(() => import("@/components/SetBrowser"), {
+  ssr: false,
+});
+
 export default function Home() {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<EbayResult | null>(null);
@@ -64,6 +68,10 @@ export default function Home() {
 
         <section>
           <PopularCards onSelect={search} />
+        </section>
+
+        <section>
+          <SetBrowser onSearch={search} />
         </section>
       </main>
 
