@@ -15,12 +15,14 @@ interface CardWithPrice extends SetCard {
 
 const ERA_TABS = [
   { id: "all", label: "ทั้งหมด" },
+  { id: "mega2025", label: "🆕 Mega (2025 JP)" },
   { id: "sv", label: "Scarlet & Violet" },
   { id: "swsh", label: "Sword & Shield" },
   { id: "xy", label: "XY (Mega)" },
 ];
 
 function getEra(setId: string) {
+  if (setId.startsWith("m")) return "mega2025";
   if (setId.startsWith("sv")) return "sv";
   if (setId.startsWith("swsh")) return "swsh";
   if (setId.startsWith("xy")) return "xy";
