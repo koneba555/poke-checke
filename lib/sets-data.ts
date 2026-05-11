@@ -361,7 +361,7 @@ export const cardSets: CardSet[] = [
     id: "m1l",
     name: "Mega Brave",
     nameTh: "Mega Brave (JP 2025)",
-    logo: "https://www.serebii.net/card/megabrave.jpg",
+    logo: "https://den-media.pokellector.com/logos/Mega-Brave.logo.416.png",
     cards: [
       { id: "m1l-092", name: "Mega Lucario ex MUR", nameTh: "เมก้าลูคาริโอ ex (MUR)", image: "https://www.serebii.net/card/th/megabrave/092.jpg", ebayQuery: "Mega Lucario ex Mega Brave MUR japanese" },
       { id: "m1l-088", name: "Mega Lucario ex SAR", nameTh: "เมก้าลูคาริโอ ex SAR", image: "https://www.serebii.net/card/th/megabrave/088.jpg", ebayQuery: "Mega Lucario ex Mega Brave SAR japanese" },
@@ -375,7 +375,7 @@ export const cardSets: CardSet[] = [
     id: "m1s",
     name: "Mega Symphonia",
     nameTh: "Mega Symphonia (JP 2025)",
-    logo: "https://www.serebii.net/card/megasymphonia.jpg",
+    logo: "https://den-media.pokellector.com/logos/Mega-Symphonia.logo.417.png",
     cards: [
       { id: "m1s-092", name: "Mega Gardevoir ex MUR", nameTh: "เมก้าการ์เดวัวร์ ex (MUR)", image: "https://www.serebii.net/card/megasymphonia/092.jpg", ebayQuery: "Mega Gardevoir ex Mega Symphonia MUR japanese" },
       { id: "m1s-087", name: "Mega Gardevoir ex SAR", nameTh: "เมก้าการ์เดวัวร์ ex SAR", image: "https://www.serebii.net/card/megasymphonia/087.jpg", ebayQuery: "Mega Gardevoir ex Mega Symphonia SAR japanese" },
@@ -389,7 +389,7 @@ export const cardSets: CardSet[] = [
     id: "m2",
     name: "Inferno X",
     nameTh: "Inferno X (JP 2025)",
-    logo: "https://www.serebii.net/card/infernox.jpg",
+    logo: "https://den-media.pokellector.com/logos/Inferno-X.logo.425.png",
     cards: [
       { id: "m2-116", name: "Mega Charizard X ex MUR", nameTh: "เมก้าชาริซาร์ด X ex (MUR)", image: "https://www.serebii.net/card/th/infernox/116.jpg", ebayQuery: "Mega Charizard X ex Inferno X MUR japanese" },
       { id: "m2-110", name: "Mega Charizard X ex SAR", nameTh: "เมก้าชาริซาร์ด X ex SAR", image: "https://www.serebii.net/card/th/infernox/110.jpg", ebayQuery: "Mega Charizard X ex Inferno X SAR japanese" },
@@ -403,7 +403,7 @@ export const cardSets: CardSet[] = [
     id: "m2a",
     name: "MEGA Dream ex",
     nameTh: "MEGA Dream ex (High Class JP)",
-    logo: "https://www.serebii.net/card/megadreamex.jpg",
+    logo: "https://den-media.pokellector.com/logos/MEGA-Dream-ex.logo.427.png",
     cards: [
       { id: "m2a-240", name: "Mega Gengar ex SAR", nameTh: "เมก้าเก็งการ์ ex SAR (~$514)", image: "https://www.serebii.net/card/th/megadreamex/240.jpg", ebayQuery: "Mega Gengar ex MEGA Dream ex SAR japanese" },
       { id: "m2a-250", name: "Mega Dragonite ex MUR", nameTh: "เมก้าแดรกโกไนต์ ex MUR (~$463)", image: "https://www.serebii.net/card/th/megadreamex/250.jpg", ebayQuery: "Mega Dragonite ex MEGA Dream ex MUR japanese" },
@@ -417,7 +417,7 @@ export const cardSets: CardSet[] = [
     id: "m3",
     name: "Nihil Zero",
     nameTh: "Nihil Zero / ムーニキスゼロ (JP 2026)",
-    logo: "https://www.serebii.net/card/nihilzero.jpg",
+    logo: "https://den-media.pokellector.com/logos/Munikis-Zero.logo.428.png",
     cards: [
       { id: "m3-117", name: "Mega Zygarde ex MUR", nameTh: "เมก้าไซการ์ดี ex MUR", image: "https://www.serebii.net/card/nihilzero/117.jpg", ebayQuery: "Mega Zygarde ex Nihil Zero MUR japanese" },
       { id: "m3-113", name: "Mega Zygarde ex SAR", nameTh: "เมก้าไซการ์ดี ex SAR", image: "https://www.serebii.net/card/nihilzero/113.jpg", ebayQuery: "Mega Zygarde ex Nihil Zero SAR japanese" },
@@ -431,7 +431,7 @@ export const cardSets: CardSet[] = [
     id: "m4",
     name: "Ninja Spinner",
     nameTh: "Ninja Spinner (JP 2026)",
-    logo: "https://www.serebii.net/card/ninjaspinner.jpg",
+    logo: "https://den-media.pokellector.com/logos/Ninja-Spinner.logo.430.png",
     cards: [
       { id: "m4-120", name: "Mega Greninja ex MUR", nameTh: "เมก้าเกร็นนินจา ex MUR", image: "https://www.serebii.net/card/ninjaspinner/120.jpg", ebayQuery: "Mega Greninja ex Ninja Spinner MUR japanese" },
       { id: "m4-114", name: "Mega Greninja ex SAR", nameTh: "เมก้าเกร็นนินจา ex SAR", image: "https://www.serebii.net/card/ninjaspinner/114.jpg", ebayQuery: "Mega Greninja ex Ninja Spinner SAR japanese" },
