@@ -2,6 +2,21 @@ import { calcPriceStats } from "@/lib/ebay";
 
 export const runtime = "edge";
 
+async function getEbayToken(appId: string, certId: string): Promise<string> {
+  const credentials = btoa(`${appId}:${certId}`);
+  const res = await fetch("https://api.ebay.com/identity/v1/oauth2/token", {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${credentials}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: "grant_type=client_credentials&scope=https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope",
+  });
+  const data = await res.json();
+  if (!data.access_token) throw new Error("Token fetch failed");
+  return data.access_token;
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q");
@@ -11,61 +26,48 @@ export async function GET(request: Request) {
   }
 
   const appId = process.env.EBAY_APP_ID;
-  if (!appId) {
+  const certId = process.env.EBAY_CERT_ID;
+  if (!appId || !certId) {
     return Response.json({ error: "eBay API not configured" }, { status: 500 });
   }
 
-  const keywords = encodeURIComponent(`${query} pokemon card`);
-  const url =
-    `https://svcs.ebay.com/services/search/FindingService/v1` +
-    `?OPERATION-NAME=findCompletedItems` +
-    `&SERVICE-VERSION=1.0.0` +
-    `&SECURITY-APPNAME=${appId}` +
-    `&RESPONSE-DATA-FORMAT=JSON` +
-    `&keywords=${keywords}` +
-    `&itemFilter(0).name=SoldItemsOnly` +
-    `&itemFilter(0).value=true` +
-    `&paginationInput.entriesPerPage=50` +
-    `&sortOrder=EndTimeSoonest`;
-
   try {
-    const res = await fetch(url);
+    const token = await getEbayToken(appId, certId);
+
+    const q = encodeURIComponent(`${query} pokemon card`);
+    const res = await fetch(
+      `https://api.ebay.com/buy/browse/v1/item_summary/search?q=${q}&limit=50&filter=buyingOptions%3A%7BFIXED_PRICE%7D`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "X-EBAY-C-MARKETPLACE-ID": "EBAY_US",
+        },
+      }
+    );
+
     const data = await res.json();
-
-    const response = data?.findCompletedItemsResponse?.[0];
-    const ack = response?.ack?.[0];
-
-    if (ack !== "Success") {
-      const msg = response?.errorMessage?.[0]?.error?.[0]?.message?.[0] ?? "eBay error";
-      return Response.json({ error: msg, prices: null, items: [] });
-    }
-
-    const items: any[] = response?.searchResult?.[0]?.item ?? [];
+    const items: any[] = data.itemSummaries ?? [];
 
     if (items.length === 0) {
       return Response.json({ prices: null, items: [] });
     }
 
-    const rawPrices = items.map((item) =>
-      parseFloat(
-        item.sellingStatus?.[0]?.currentPrice?.[0]?.__value__ ?? "0"
-      )
-    );
+    const rawPrices = items
+      .map((item) => parseFloat(item.price?.value ?? "0"))
+      .filter((p) => p > 0);
 
     const prices = calcPriceStats(rawPrices);
 
     const recent = items.slice(0, 6).map((item) => ({
-      title: item.title?.[0] ?? "",
-      price: parseFloat(
-        item.sellingStatus?.[0]?.currentPrice?.[0]?.__value__ ?? "0"
-      ),
-      url: item.viewItemURL?.[0] ?? "",
-      imageUrl: item.galleryURL?.[0] ?? "",
-      endTime: item.listingInfo?.[0]?.endTime?.[0] ?? "",
+      title: item.title ?? "",
+      price: parseFloat(item.price?.value ?? "0"),
+      url: item.itemWebUrl ?? "",
+      imageUrl: item.thumbnailImages?.[0]?.imageUrl ?? "",
+      endTime: "",
     }));
 
     return Response.json({ prices, items: recent });
-  } catch {
-    return Response.json({ error: "Failed to fetch eBay data" }, { status: 500 });
+  } catch (e: any) {
+    return Response.json({ error: e.message ?? "Failed to fetch eBay data" }, { status: 500 });
   }
 }

@@ -55,7 +55,7 @@ export default function PriceResults({ query, result, loading }: Props) {
       <div>
         <h3 className="text-white font-semibold text-lg">{query}</h3>
         <p className="text-gray-400 text-sm">
-          จากการขายจริงบน eBay {prices.count} รายการล่าสุด
+          จากราคาขายปัจจุบันบน eBay {prices.count} รายการ
         </p>
       </div>
 
@@ -93,11 +93,7 @@ export default function PriceResults({ query, result, loading }: Props) {
                 )}
                 <div className="flex-1 min-w-0">
                   <p className="text-white text-sm truncate">{item.title}</p>
-                  <p className="text-gray-400 text-xs">
-                    {item.endTime
-                      ? new Date(item.endTime).toLocaleDateString("th-TH")
-                      : ""}
-                  </p>
+                  <p className="text-gray-400 text-xs">ราคาปัจจุบัน</p>
                 </div>
                 <div className="text-right flex-shrink-0">
                   <p className="text-green-400 font-semibold">${fmt(item.price)}</p>
