@@ -13,10 +13,25 @@ interface CardWithPrice extends SetCard {
   loading: boolean;
 }
 
+const ERA_TABS = [
+  { id: "all", label: "ทั้งหมด" },
+  { id: "sv", label: "Scarlet & Violet" },
+  { id: "swsh", label: "Sword & Shield" },
+  { id: "xy", label: "XY (Mega)" },
+];
+
+function getEra(setId: string) {
+  if (setId.startsWith("sv")) return "sv";
+  if (setId.startsWith("swsh")) return "swsh";
+  if (setId.startsWith("xy")) return "xy";
+  return "other";
+}
+
 export default function SetBrowser({ onSearch }: Props) {
   const [selectedSet, setSelectedSet] = useState<CardSet | null>(null);
   const [cards, setCards] = useState<CardWithPrice[]>([]);
   const [loading, setLoading] = useState(false);
+  const [era, setEra] = useState("all");
 
   const openSet = async (set: CardSet) => {
     setSelectedSet(set);
@@ -55,8 +70,25 @@ export default function SetBrowser({ onSearch }: Props) {
 
       {/* Set grid */}
       {!selectedSet ? (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {cardSets.map((set) => (
+        <div className="space-y-4">
+          {/* Era tabs */}
+          <div className="flex gap-2 flex-wrap">
+            {ERA_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setEra(tab.id)}
+                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                  era === tab.id
+                    ? "bg-red-600 text-white"
+                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {cardSets.filter((s) => era === "all" || getEra(s.id) === era).map((set) => (
             <button
               key={set.id}
               onClick={() => openSet(set)}
@@ -75,6 +107,7 @@ export default function SetBrowser({ onSearch }: Props) {
               <p className="text-gray-500 text-xs">{set.cards.length} การ์ด</p>
             </button>
           ))}
+          </div>
         </div>
       ) : (
         <div className="space-y-4">
